@@ -1,6 +1,14 @@
+// para despliegue en prod
+var url = window.location.href;
+var swLocation = '/js-pwa-twittor/sw.js';
+
 // service worker
 if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('/sw.js');
+
+    if (url.includes('localhost')) {
+        swLocation = '/sw.js';
+    }
+    navigator.serviceWorker.register(swLocation);
 }
 
 // Referencias de jQuery
